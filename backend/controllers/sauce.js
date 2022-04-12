@@ -1,5 +1,4 @@
 const Sauce = require('../models/sauce');
-const Sauce = require('../models/user');
 
 exports.createSauce = (req,res,next)=> {
   const sauce = new Sauce({
