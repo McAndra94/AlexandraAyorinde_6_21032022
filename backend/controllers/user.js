@@ -1,11 +1,21 @@
-//green
-
 const User = require("../models/user");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken"); 
-require("dotenv").config();
+const passwordValidator = require("password-validator")
 
 exports.userSignUp = (req,res,next)=> {
+    let passwordSchema = new passwordValidator()
+    passwordSchema
+    .is().min(6)                                    
+    .has().uppercase(1)                              
+    .has().lowercase(1)                              
+    .has().digits(1)                                 
+    .has().not().spaces()                           
+    .is().not().oneOf(['Passw0rd', 'Password123']); 
+    if(passwordSchema.validate(req.body.password) === false){
+        return res.status(400).json({message : "Mot de passe incorrect"})
+    }
+
     bcrypt.hash(req.body.password, 10)
     .then(hash => {
         const user = new User({
