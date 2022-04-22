@@ -1,4 +1,3 @@
-// green
 const jwt = require("jsonwebtoken");
 
 module.exports = (req,res,next)=> {
@@ -11,8 +10,7 @@ module.exports = (req,res,next)=> {
     } else {
       next();
     }
-  } catch {
-    res.status(401).json({
+  } catch {res.status(401).json({
       error: new Error("Requête non authentifiée !")
     });
   }
