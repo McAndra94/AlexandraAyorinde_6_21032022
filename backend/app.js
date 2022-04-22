@@ -6,7 +6,7 @@ const path = require("path");
 const sauceRoutes = require("./routes/sauce");
 const userRoutes = require("./routes/user");
 
-mongoose.connect("mongodb+srv://Alexandra:p733Lds6fnU0OQXS@cluster0.ioilu.mongodb.net/Project0?retryWrites=true&w=majority",{
+mongoose.connect("mongodb+srv://##name:###@cluster0.ioilu.mongodb.net/Project0?retryWrites=true&w=majority",{
     useNewUrlParser: true,
     useUnifiedTopology:true})
 .then(()=> console.log("Connection à MongoDB réussie !"))
