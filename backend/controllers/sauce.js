@@ -33,7 +33,7 @@ exports.modifySauce = (req,res,next)=> {
     ...sauceParse,
     imageUrl: "http://localhost:3000/images/"+ req.file.filename,
   });
-  Sauce.updateOne({_id: req.params.id}, sauce)
+  Sauce.update({_id: req.params.id}, sauce)
   .then(()=> res.status(201).json({message: "Sauce modifée !"}))
   .catch((error)=> res.status(400).json({error}));
 };
